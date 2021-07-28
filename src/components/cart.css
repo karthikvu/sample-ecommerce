@@ -1,0 +1,37 @@
+.cart-container {
+    width: 400px;
+    height: 600px;
+    border-left: 1px solid gray;
+    padding-left: 25px;
+}
+
+.cart-heading { 
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.items-container {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.item {
+    display: flex;
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.item-name { 
+    flex: 1;
+}
+
+.item-price {
+    font-weight: 600;
+}
+
+.total {
+    text-align: right;
+    font-size: 24px;
+    font-weight: 600;
+    border-top: 1px solid;
+    padding-top: 10px;
+}
