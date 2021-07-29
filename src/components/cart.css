@@ -1,5 +1,5 @@
 .cart-container {
-    width: 400px;
+    width: 550px;
     height: 600px;
     border-left: 1px solid gray;
     padding-left: 25px;
@@ -17,13 +17,18 @@
 .item {
     display: flex;
     font-size: 18px;
-    margin-top: 5px;
+    margin-top: 12px;
 }
 
 .item-name { 
     flex: 1;
 }
 
+.rate {
+    font-size: 14px;
+    color: gray;
+
+}
 .item-price {
     font-weight: 600;
 }

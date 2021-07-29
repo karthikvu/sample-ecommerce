@@ -1,54 +1,44 @@
 import "./cart.css"
+import PriceDisplay from "./PriceDisplay"
+
+const combine = arr => {
+    return arr.reduce((acc, curr) => {
+        console.log(curr)
+        if (!acc[curr.id]) {
+            acc[curr.id] = []
+        }
+        acc[curr.id].push(curr)
+        return acc
+    }, {})
+
+}
 
 const Cart = props => {
     const { cartData = [] } = props
+
+    let sum = cartData.reduce((a, c) => a + c.price, 0)
+
+    let unique = combine(cartData)
     
-    // ------ above line is same as below
-    // let cartData = []
-    
-    // if (props.cartData) {
-    //     cartData = props.cartData
-    // }
-
-
-    // const cartData = [
-    //     {
-    //         name: "Apple MacBook Pro",
-    //         price: 120000
-    //     },
-    //     {
-    //         name: "SparX Shoes",
-    //         price: 1250
-    //     },  {
-    //         name: "Apple MacBook Pro",
-    //         price: 120000
-    //     },
-    //     {
-    //         name: "SparX Shoes",
-    //         price: 1250
-    //     },
-    // ]
-
-    let sum = 0
-    cartData.forEach(item => {
-        sum = item.price + sum
-    })
-
     return <div className="cart-container">
         <div className="cart-heading">My Cart ({ cartData.length })</div>
 
         <div className="items-container">
-           {cartData.map(cartItem => {
+            {Object.values(unique).map(items => {
+               let cartItem = items[0]
                return  <div className="item">
-                   <div className="item-name">{ cartItem.name }</div>
-                   <div className="item-price">Rs. {cartItem.price}</div>
+                   <div className="item-name">
+                       <div className="item-name">{cartItem.name} X {items.length} </div>
+                       <div className="rate">Price: <PriceDisplay price={cartItem.price} /></div>
+                    </div>
+                   <div className="item-price">Rs. <PriceDisplay price={cartItem.price * items.length} /></div>
            </div>
            })}
         </div>
 
         <div className="total">
             <div className="total-price">
-                Rs. { sum}
+            <PriceDisplay price={sum} />
             </div>
         </div>
        {sum > 0 ? <div className="cart-actions">

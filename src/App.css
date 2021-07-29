@@ -19,6 +19,12 @@ button.blue {
   cursor: pointer;
 }
 
+button:hover {
+  filter: brightness(80%);
+  -webkit-filter: brightness(80%);
+  transform: scale(1.02);
+}
+
 button.large {
   width: -webkit-fill-available;
   height: 60px;
